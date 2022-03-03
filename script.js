@@ -122,5 +122,11 @@ function clearAll() {
 
 
 function fillU() {
-    alert("Clicked Fill All Uncolored")
+    let grid = document.getElementById('grid')
+    for (let i = 0; i < document.querySelectorAll('tr').length; i++) {
+        for (j = 0; j < grid.children[i].children.length; j++) {
+            if(grid.children[i].children[j].style.background == 'white')
+                grid.children[i].children[j].style.background = colorSelected;
+        }
+    }
 }
