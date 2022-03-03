@@ -52,22 +52,18 @@ function addC() {
     }
     else if(rows.length == 1){
         let start = document.createElement("td");
+        start.onclick = function(){ this.style.background = colorSelected }
         document.querySelector("tr").appendChild(start)
         numCols++;
     }
     else{
         for(let i=0; i< numRows;i++){
             let col = document.createElement("td");
+            col.onclick = function(){ this.style.background = colorSelected }
             grid.children[i].appendChild(col)
         }
         numCols++;
-        console.log(grid.lastElementChild.children.length)
     }
-
-    // let data = document.createElement("td");
-    // document.querySelector("tr").appendChild(data)
-    // numCols++;
-    
 }
 
 //Remove a row
@@ -79,7 +75,12 @@ function removeR() {
 }
 //Remove a column
 function removeC() {
-    alert("Clicked Remove Col")
+    let grid = document.getElementById('grid')
+
+    for(let i=0; i< numRows;i++){
+        grid.children[i].lastElementChild.remove()
+    }
+    numCols--
 }
 //sets global var for selected color
 function selected(){
