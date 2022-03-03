@@ -89,7 +89,12 @@ function selected(){
 }
 
 function fill(){
-    alert("Clicked Fill All")
+    let grid = document.getElementById('grid')
+    for(let i=0; i < document.querySelectorAll('tr').length; i++){
+        for(j=0; j < grid.children[i].children.length; j++){
+            c = grid.children[i].children[j].style.background = colorSelected;
+        }
+    }
 }
 
 function clearAll(){
