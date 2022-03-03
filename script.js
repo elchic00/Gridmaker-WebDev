@@ -70,13 +70,12 @@ function addC() {
 function removeR() {
     let table = document.querySelector("table");
     let lastRow = table.lastElementChild;
-    document.querySelector("table").removeChild(lastRow);
+    table.removeChild(lastRow);
     numRows--;
 }
 //Remove a column
 function removeC() {
     let grid = document.getElementById('grid')
-
     for(let i=0; i< numRows;i++){
         grid.children[i].lastElementChild.remove()
     }
@@ -89,11 +88,15 @@ function selected(){
 }
 
 function fill(){
-    alert("Clicked Fill All")
+    let grid = document.getElementById('grid')
+    for(let i=0; i < document.querySelectorAll('tr').length; i++){
+        for(j=0; j < grid.children[i].children.length; j++){
+            grid.children[i].children[j].style.background = colorSelected;
+        }
+    }
 }
 
 function clearAll(){
-    alert("Clicked Clear All")
 }
 
 function fillU(){
