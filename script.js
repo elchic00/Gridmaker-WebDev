@@ -33,14 +33,11 @@ function addR() {
         grid.appendChild(row)
         numRows++
     }
-console.log()
-
 }
 
 //Add a column
 function addC() {
     let grid = document.getElementById('grid')
-
     if (numRows == 0 && numCols == 0) {
         let row = document.createElement('tr')
         let col = document.createElement("td");
@@ -61,6 +58,7 @@ function addC() {
             let col = document.createElement("td");
             col.onclick = function () { this.style.background = colorSelected }
             grid.children[i].appendChild(col)
+            console.log(grid.children[i])
         }
         numCols++;
     }
@@ -70,7 +68,6 @@ function addC() {
 function removeR() {
     let table = document.querySelector("table");
     let lastRow = table.lastElementChild;
-    console.log(table.lastElementChild)
     table.removeChild(lastRow);
     numRows--;
     if(numRows == 0 || numCols == 0){
@@ -82,11 +79,18 @@ function removeR() {
 //Remove a column
 function removeC() {
     let grid = document.getElementById('grid')
-    for (let i = 0; i < numRows; i++) {
-        grid.children[i].lastElementChild.remove()
+    let row = grid.rows
+
+    let i = 0
+    for (let j = 0; j < row.length; j++) {
+       row[j].deleteCell(i)
     }
     numCols--
-    if(numRows == 0 || numCols == 0){
+    if(numCols == 0 || numRows == 0 ){
+        for (let j = 0; j < row.length;) {
+            let lastRow = grid.lastElementChild;
+            grid.removeChild(lastRow);
+        }    
         numCols = 0
         numRows = 0
         return
