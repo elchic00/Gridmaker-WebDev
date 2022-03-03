@@ -14,6 +14,7 @@ function addR() {
         row.appendChild(col)
         grid.appendChild(row)
         numRows++
+        numCols++
     }
     else if(rows.length >= 0 && numCols == 0){
         let row = document.createElement('tr')
@@ -27,18 +28,42 @@ function addR() {
         let size = document.getElementsByTagName('table').lastElementChild
         let row = document.createElement('tr')
         for(let i=0; i < numCols; i++){
-            let data = document.createElement("td");
-            row.appendChild(data)
+            let col = document.createElement("td");
+            col.onclick = function(){ this.style.background = colorSelected }
+            row.appendChild(col)
         }
-        numRows++
         grid.appendChild(row)
+        numRows++
     }
 }
 //Add a column
 function addC() {
-    let data = document.createElement("td");
-    document.querySelector("table").appendChild(data)
-    numCols++;
+    let grid = document.getElementById('grid')
+    let rows = document.getElementsByTagName('tr');
+    
+    if(rows.length == 0){
+        let row = document.createElement('tr')
+        let col = document.createElement("td");
+        col.onclick = function(){ this.style.background = colorSelected }
+        row.appendChild(col)
+        grid.appendChild(row)
+        numRows++
+        numCols++
+    }
+    else if(rows.length == 1){
+        let start = document.createElement("td");
+        start.onclick = function(){ this.style.background = colorSelected }
+        document.querySelector("tr").appendChild(start)
+        numCols++;
+    }
+    else{
+        for(let i=0; i< numRows;i++){
+            let col = document.createElement("td");
+            col.onclick = function(){ this.style.background = colorSelected }
+            grid.children[i].appendChild(col)
+        }
+        numCols++;
+    }
 }
 
 //Remove a row
@@ -46,10 +71,16 @@ function removeR() {
     let table = document.querySelector("table");
     let lastRow = table.lastElementChild;
     document.querySelector("table").removeChild(lastRow);
+    numRows--;
 }
 //Remove a column
 function removeC() {
-    alert("Clicked Remove Col")
+    let grid = document.getElementById('grid')
+
+    for(let i=0; i< numRows;i++){
+        grid.children[i].lastElementChild.remove()
+    }
+    numCols--
 }
 //sets global var for selected color
 function selected(){
