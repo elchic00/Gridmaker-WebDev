@@ -97,7 +97,14 @@ function fill(){
 }
 
 function clearAll(){
+    let grid = document.getElementById('grid')
+    for(let i=0; i < numRows;)
+        grid.deleteRow(i)
+        
+    numCols = 0
+    numRows = 0
 }
+
 
 function fillU(){
     alert("Clicked Fill All Uncolored")
