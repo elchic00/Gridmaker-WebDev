@@ -5,12 +5,16 @@ let colorSelected;
 //Add a row
 function addR() {
     let grid = document.getElementById('grid')
-
     if (numRows == 0 && numCols == 0) {
         let row = document.createElement('tr')
         let col = document.createElement("td");
         col.style.background = "white"
-        col.onclick = function () { this.style.background = colorSelected }
+        col.onclick = function () { 
+            if(this.style.background == 'white')
+                this.style.background = colorSelected
+            else
+                this.style.background = 'white'
+         }
         row.appendChild(col)
         grid.appendChild(row)
         numRows++
@@ -20,8 +24,13 @@ function addR() {
         let row = document.createElement('tr')
         let col = document.createElement("td");
         col.style.background = "white"
-        col.onclick = function () { this.style.background = colorSelected }
-        row.appendChild(col)
+        col.onclick = function () { 
+            if(this.style.background == 'white')
+                this.style.background = colorSelected
+            else
+                this.style.background = 'white'
+         }
+         row.appendChild(col)
         grid.appendChild(row)
         numRows++
     }
@@ -30,8 +39,13 @@ function addR() {
         for (let i = 0; i < numCols; i++) {
             let col = document.createElement("td");
             col.style.background = "white"
-            col.onclick = function () { this.style.background = colorSelected }
-            row.appendChild(col)
+            col.onclick = function () { 
+                if(this.style.background == 'white')
+                    this.style.background = colorSelected
+                else
+                    this.style.background = 'white'
+             }
+             row.appendChild(col)
         }
         grid.appendChild(row)
         numRows++
@@ -45,8 +59,13 @@ function addC() {
         let row = document.createElement('tr')
         let col = document.createElement("td");
         col.style.background = "white"
-        col.onclick = function () { this.style.background = colorSelected }
-        row.appendChild(col)
+        col.onclick = function () { 
+            if(this.style.background == 'white')
+                this.style.background = colorSelected
+            else
+                this.style.background = 'white'
+         }  
+         row.appendChild(col)
         grid.appendChild(row)
         numRows++
         numCols++
@@ -54,16 +73,26 @@ function addC() {
     else if (numRows == 1 && numCols >= 1) {
         let col = document.createElement("td");
         col.style.background = "white"
-        col.onclick = function () { this.style.background = colorSelected }
-        grid.children[0].appendChild(col)
+        col.onclick = function () { 
+            if(this.style.background == 'white')
+                this.style.background = colorSelected
+            else
+                this.style.background = 'white'
+         }  
+          grid.children[0].appendChild(col)
         numCols++;
     }
     else {
         for (let i = 0; i < numRows; i++) {
             let col = document.createElement("td");
             col.style.background = "white"
-            col.onclick = function () { this.style.background = colorSelected }
-            grid.children[i].appendChild(col)
+            col.onclick = function () { 
+                if(this.style.background == 'white')
+                    this.style.background = colorSelected
+                else
+                    this.style.background = 'white'
+             }      
+             grid.children[i].appendChild(col)
             console.log(grid.children[i])
         }
         numCols++;
@@ -79,14 +108,12 @@ function removeR() {
     if(numRows == 0 || numCols == 0){
         numCols = 0
         numRows = 0
-        return
     }
 }
 //Remove a column
 function removeC() {
     let grid = document.getElementById('grid')
     let row = grid.rows
-
     let i = 0
     for (let j = 0; j < row.length; j++) {
        row[j].deleteCell(i)
@@ -99,7 +126,6 @@ function removeC() {
         }    
         numCols = 0
         numRows = 0
-        return
     }
 }
 //sets global var for selected color
@@ -129,10 +155,10 @@ function clearAll() {
 
 function fillU() {
     let grid = document.getElementById('grid')
-    for (let i = 0; i < document.querySelectorAll('tr').length; i++) {
-        for (j = 0; j < grid.children[i].children.length; j++) {
-            if(grid.children[i].children[j].style.background == 'white')
-                grid.children[i].children[j].style.background = colorSelected;
+    for (let row = 0; row < document.querySelectorAll('tr').length; row++) {
+        for (j = 0; j < grid.children[row].children.length; j++) {
+            if(grid.children[row].children[j].style.background == 'white')
+                grid.children[row].children[j].style.background = colorSelected;
         }
     }
 }
