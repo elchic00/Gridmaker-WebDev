@@ -20,20 +20,6 @@ function addR() {
         numRows++
         numCols++
     }
-    else if (numRows >= 1 && numCols == 0) {
-        let row = document.createElement('tr')
-        let col = document.createElement("td");
-        col.style.background = "white"
-        col.onclick = function () { 
-            if(this.style.background == 'white')
-                this.style.background = colorSelected
-            else
-                this.style.background = 'white'
-         }
-         row.appendChild(col)
-        grid.appendChild(row)
-        numRows++
-    }
     else {
         let row = document.createElement('tr')
         for (let i = 0; i < numCols; i++) {
@@ -65,22 +51,10 @@ function addC() {
             else
                 this.style.background = 'white'
          }  
-         row.appendChild(col)
+        row.appendChild(col)
         grid.appendChild(row)
         numRows++
         numCols++
-    }
-    else if (numRows == 1 && numCols >= 1) {
-        let col = document.createElement("td");
-        col.style.background = "white"
-        col.onclick = function () { 
-            if(this.style.background == 'white')
-                this.style.background = colorSelected
-            else
-                this.style.background = 'white'
-         }  
-          grid.children[0].appendChild(col)
-        numCols++;
     }
     else {
         for (let i = 0; i < numRows; i++) {
@@ -93,7 +67,6 @@ function addC() {
                     this.style.background = 'white'
              }      
              grid.children[i].appendChild(col)
-            console.log(grid.children[i])
         }
         numCols++;
     }
@@ -106,8 +79,7 @@ function removeR() {
     table.removeChild(lastRow);
     numRows--;
     if(numRows == 0 || numCols == 0){
-        numCols = 0
-        numRows = 0
+        numCols,numRows = 0, 0
     }
 }
 //Remove a column
@@ -124,14 +96,12 @@ function removeC() {
             let lastRow = grid.lastElementChild;
             grid.removeChild(lastRow);
         }    
-        numCols = 0
-        numRows = 0
+        numCols,numRows = 0, 0
     }
 }
 //sets global var for selected color
 function selected() {
     colorSelected = document.getElementById("selectedID").value;
-    console.log(colorSelected);
 }
 
 function fill() {
