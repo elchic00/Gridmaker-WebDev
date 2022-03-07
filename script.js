@@ -78,9 +78,6 @@ function removeR() {
     let lastRow = table.lastElementChild;
     table.removeChild(lastRow);
     numRows--;
-    if(numRows == 0 || numCols == 0){
-        numCols,numRows = 0, 0
-    }
 }
 //Remove a column
 function removeC() {

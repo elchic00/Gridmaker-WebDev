@@ -1,5 +1,5 @@
 ## Gridmaker-WebDev
-#### Assignment 2: Gridmaker (DOM)
+Gridmaker (DOM)
 
 https://elchic00.github.io/Gridmaker-WebDev/
 
